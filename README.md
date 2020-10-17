@@ -1,7 +1,7 @@
 # Stryktipset slumpgenerator
 
 This was written in the course Script programming and Internet applications.
-The task was to analyze a dataset of chickens and determine the best feed for them.
+The task was to make a random stryktipset line generator.
 
 
 I must warn that this script is not the best example of following standard naming conventions but I will blame it on being a student and not knowing better :-)
