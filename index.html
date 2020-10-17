@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="sv">
+<head>
+	<title>Slumpgenerator för stryktipset</title>
+	<meta charset="utf-8" />	 
+	<link rel="stylesheet"  href="tipset.css" />
+	<script src="tipset.js"></script>
+	<link rel="icon" href="svspel.ico">
+</head>
+
+<body>
+	<header>
+		<img src="stryktipset_logo.jpg" alt="Svenska spel logo">
+	</header>
+	<div id="main">
+	<section id="section-right">
+<h2>Stryktipset</h2>
+<p>Vinstplan för Stryktipset:<br>
+För att vinna något krävs minst 10 rätt, och vinstsumman måste dessutom överstiga 10 kronor per person när den
+divideras med antal vinnare för att vinst ska betalas ut. Är vinsten lägre än så behåller Svenska Spel pengarna och
+använder dem för att fylla på potten för nästa dragning. Att vinster hålls inne för att de är för låga är tämligen
+vanligt för 10 rätt, och då och då inträffar det även för 11 rätt.</p>
+
+<ul>
+	<li>13 rätt
+		<ul>
+			<li>40% - 1:1 594 323 </li>
+		</ul>
+	</li>
+	<li>12 rätt
+		<ul>
+			<li>15% - 1:61 320</li>
+		</ul>
+	</li>
+	<li>11 rätt
+		<ul>
+			<li>12% - 1:5 110</li>
+		</ul>
+	</li>
+	<li>10 rätt
+		<ul>
+			<li>25% - 1:697</li>
+		</ul>
+	</li>
+	<li>Garantifond 8%</li>
+</ul>	</section>
+	<section id="section-left">
+		<h2>Slumpgenerator för stryktipset</h2>
+		<article>
+<table id="table1">
+<td colspan=13>Stryktipsraden</td>
+<tr>
+	<th id="tips0">&nbsp;</th>
+	<th id="tips1">&nbsp;</th>
+	<th id="tips2">&nbsp;</th>
+	<th id="tips3">&nbsp;</th>
+	<th id="tips4">&nbsp;</th>
+	<th id="tips5">&nbsp;</th>
+	<th id="tips6">&nbsp;</th>
+	<th id="tips7">&nbsp;</th>
+	<th id="tips8">&nbsp;</th>
+	<th id="tips9">&nbsp;</th>
+	<th id="tips10">&nbsp;</th>
+	<th id="tips11">&nbsp;</th>
+	<th id="tips12">&nbsp;</th>
+</tr>
+</table>
+<input type="button" value="Slumpa" id="reload" onclick="generate();clickCounter()">
+<br><br>
+<SCRIPT>
+	function GetCookie(name) {
+		var arg = name + "=";
+		var alen = arg.length;
+		var clen = document.cookie.length;
+		var i = 0;
+		while (i < clen) {
+			var j = i + alen;
+			if (document.cookie.substring(i, j) == arg)
+				return getCookieVal(j);
+			i = document.cookie.indexOf(" ", i) + 1;
+			if (i == 0) break;
+		}
+		return null;
+	}
+	function SetCookie(name, value) {
+		var argv = SetCookie.arguments;
+		var argc = SetCookie.arguments.length;
+		var expires = (argc > 2) ? argv[2] : null;
+		var path = (argc > 3) ? argv[3] : null;
+		var domain = (argc > 4) ? argv[4] : null;
+		var secure = (argc > 5) ? argv[5] : false;
+		document.cookie = name + "=" + escape(value) +
+			((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+			((path == null) ? "" : ("; path=" + path)) +
+			((domain == null) ? "" : ("; domain=" + domain)) +
+			((secure == true) ? "; secure" : "");
+	}
+	function DeleteCookie(name) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 1);
+		var cval = GetCookie(name);
+		document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
+	}
+	var expDays = 30;
+	var exp = new Date();
+	exp.setTime(exp.getTime() + (expDays * 24 * 60 * 60 * 1000));
+	function amt() {
+		var count = GetCookie('count')
+		if (count == null) {
+			SetCookie('count', '1')
+			return 1
+		}
+		else {
+			var newcount = parseInt(count) + 1;
+			DeleteCookie('count')
+			SetCookie('count', newcount, exp)
+			return count
+		}
+	}
+	function getCookieVal(offset) {
+		var endstr = document.cookie.indexOf(";", offset);
+		if (endstr == -1)
+			endstr = document.cookie.length;
+		return unescape(document.cookie.substring(offset, endstr));
+	}
+</SCRIPT>
+<SCRIPT>
+	document.write("Du har besökt sidan <b>" + amt() + "</b> gånger.")
+</SCRIPT>
+<div id="result"></div>
+<script>
+	function clickCounter() {
+		if (typeof (Storage) !== "undefined") {
+			if (localStorage.clickcount) {
+				localStorage.clickcount = Number(localStorage.clickcount) + 1;
+			} else {
+				localStorage.clickcount = 1;
+			}
+			document.getElementById("result").innerHTML = "Du har genererat <b>" + localStorage.clickcount + "</b> stryktipsrader.";
+		} else {
+			document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+		}
+	}
+</script>
+</article>
+</section>
+</div>
+<footer>
+	<p style="float:left;">
+		<a href="https://www.spelalagom.se/sv/spelproblem/spel-och-18-arsgrans/" target="_blank" rel="noopener" class="inline-block">
+			<img class="ga-svg" alt="18 år för spel" src="https://cdn1.svenskaspel.net/images/ui/gambling-authority/18.svg">
+		</a>
+	</p>
+	<p style="float:left;">
+		<b>Spel för dig över 18 år</b>
+	</p>
+	<p style="float:right;">
+		<a href="https://www.stodlinjen.se/" target="_blank" rel="noopener" class="inline-block">
+			<img class="" alt="Stödlinjen" src="https://cdn1.svenskaspel.net/images/ui/gambling-authority/stodlinjen.svg">
+		</a>
+	</p>
+	<p style="float:right;">
+		<b>Spelar du för mycket?</b><br>
+		Ring Stödlinjen: <a href="tel:020-819100">020-81 91 00</a>
+	</p>
+</footer>
+</body>
+</html>
