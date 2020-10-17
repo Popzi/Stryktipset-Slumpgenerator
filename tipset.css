@@ -1,0 +1,28 @@
+html {
+    	font-family: Verdana,Geneva,sans-serif; 
+}
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    font-size: 1.8em;
+}
+
+#section-left {
+    overflow:hidden;
+}
+#section-right {
+    width:20em;
+    margin-left:5em;
+    float:right;
+}
+
+#main {
+    width: 60em;
+    height:30em;
+}
+footer {
+    width: 30em;
+}
